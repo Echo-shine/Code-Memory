@@ -1,0 +1,76 @@
+package cn.edu.usst.jx;
+
+//designed by Echo-shine
+
+import java.util.Scanner;
+
+public class Reverse {
+
+//Enter a positive integer and convert it to Binary or Hex.
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int number,n;
+		Scanner in=new Scanner (System.in);
+		System.out.print("Enter a positive integer:");
+		number=in.nextInt();
+       
+		if (number<0){
+			System.out.println("Sorry,it isn't a positive integer!");}
+		else {
+			
+			if(number<=1)
+				System.out.print("Covert to Binary or Hexadecimal is:"+number);
+			else{
+			Scanner tr=new Scanner(System.in);
+			System.out.println("Select:   1.to Binary       2.to Hexadecimal");
+			n=tr.nextInt();
+			
+			if (n==1){
+				System.out.print("Covert to Binary is:");
+				printBinary(number);			
+				}
+			else{
+				System.out.print("Covert to Hexadecimal is:");
+				printHex(number);
+			    	}
+				}
+			}
+		}
+			
+	  public static void printBinary(int num)
+	  
+	  //Binary 用数组实现存储。并倒序输出值
+		{
+			int binary[]=new int[20];
+			int index=0;
+			while(num!=0){
+				binary[index++]=num%2;
+				num=num/2;
+			}
+			
+			for (int i=index-1;i>=0;i--)
+			{
+				System.out.print(binary[i]+"");
+			}
+		}
+			
+		public static void  printHex(int num)
+		
+		//Hex 用已确定的数组存放十六进制的表现元素。再用新的数组存储正整数转换时的余数，根据下标实现输出
+			char hexadecimal[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+			int index2=0;
+			int hex[]=new int[20];
+			while(num!=0)
+			{
+				hex[index2++]=num%16;
+				num=num/16;	
+			}
+			
+			for(int j=index2-1;j>=0;j--)
+			{
+				System.out.print(hexadecimal[hex[j]]+"");
+			}
+		
+		}
+}
