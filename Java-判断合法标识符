@@ -1,0 +1,32 @@
+package cn.edu.usst.jx;
+//designed by Echo-shine;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Judgement {
+/* 输入任意长度的标识符 判断是否是合法标识符 
+   第一个不能是数字 其他是由数字、字母、下划线、美元符号组成
+   不能用元字符/w的情况下
+   用正则表达式实现功能 */
+
+	public static void main(String[] args) throws IOException{
+		// TODO Auto-generated method stub
+		boolean contiGo = true;
+		String str;
+		BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));//读取字符串数据流 
+		String regex="^[^0-9]+([A-Za-z0-9]|[_]|[$])+$";//正则表达式
+		String identifier = "";
+		while (contiGo) {
+			System.out.println("请输入标识符：");
+			identifier = buf.readLine();
+			boolean match = identifier.matches(regex);//用布尔类型记录判断结果
+			if (match) {
+				System.out.println(identifier + "是合法标识符" );
+				break;
+			}
+			else System.out.println(identifier + "不是合法标识符" );
+		}
+	}
+}
